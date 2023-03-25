@@ -104,3 +104,10 @@ def test_namespaced_decorator(client):
     assert url == "/namespaced/baz/"
     response = client.get(url)
     assert response.status_code == 200
+
+
+def test_class_based_view(client):
+    url = reverse("class_based_view")
+    assert url == "/class_based_view/"
+    response = client.get(url)
+    assert response.status_code == 200

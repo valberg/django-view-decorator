@@ -6,6 +6,7 @@ from typing import Any
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import HttpResponseForbidden
+from django.views import View
 
 from django_view_decorator.apps import ViewRegistry
 
@@ -61,6 +62,11 @@ def view(
 
             if permissions and not request.user.has_perms(permissions):
                 return HttpResponseForbidden()
+
+            if isinstance(view_func, type) and issubclass(view_func, View):
+                print(args)
+                print(kwargs)
+                return view_func.as_view()(request, *args, **kwargs)
 
             return view_func(request, *args, **kwargs)
 

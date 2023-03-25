@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.views import View
 
 from django_view_decorator import namespaced_decorator_factory
 from django_view_decorator import view
@@ -86,3 +87,12 @@ namespaced_view = namespaced_decorator_factory(
 )
 def baz_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse("baz")
+
+
+@view(
+    paths="class_based_view/",
+    name="class_based_view",
+)
+class AClassBasedView(View):
+    def get(self, request: HttpRequest) -> HttpResponse:
+        return HttpResponse("class_based_view")
