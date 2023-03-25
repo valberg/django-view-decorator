@@ -78,4 +78,6 @@ class ViewDecoratorAppConf(AppConfig):
         if conf.DJANGO_VIEW_DECORATOR_AUTODISCOVER_VIEWS:
             from django.utils.module_loading import autodiscover_modules
 
-            autodiscover_modules("views")
+            autodiscover_modules(
+                conf.DJANGO_VIEW_DECORATOR_AUTODISCOVER_MODULE
+            )
