@@ -35,8 +35,6 @@ path = "django_view_decorator/__about__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "LICENSE.txt",
-    "README.txt",
     "/django_view_decorator",
 ]
 
