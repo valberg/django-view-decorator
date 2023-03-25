@@ -5,10 +5,12 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+from django_view_decorator.__about__ import __version__
+
 project = "django-view-decorator"
 copyright = "2023, Víðir Valberg Guðmundsson"
 author = "Víðir Valberg Guðmundsson"
-release = "0.0.1"
+release = __version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
