@@ -8,7 +8,7 @@
 
 -----
 
-**django-view-decorator** aims to be a collection of (opinionated) useful utilities for Django views. Mainly function based views.
+**django-view-decorator** is decorator aimed at bringing locality of behaviour to the connection between a URL and a view in Django.
 
 ## Features
 
