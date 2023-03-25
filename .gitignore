@@ -1,0 +1,8 @@
+venv/
+.idea/
+__pycache__/
+.coverage
+dist/
+docs/_build/
+htmlcov/
+tests/db.sqlite3
