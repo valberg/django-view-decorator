@@ -59,9 +59,13 @@ class ViewRegistry:
                             _patterns.append(
                                 path(_path, _view.view, name=name),
                             )
-            urlpatterns.append(
-                path("", include((_patterns, namespace), namespace=namespace)),
-            )
+
+            if namespace:
+                urlpatterns.append(
+                    path("", include((_patterns, namespace), namespace=namespace)),
+                )
+            else:
+                urlpatterns.extend(_patterns)
 
         return urlpatterns
 
