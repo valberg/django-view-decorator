@@ -13,7 +13,7 @@ else:
 from django.apps import AppConfig
 from django.http import HttpRequest
 from django.http import HttpResponse
-from django.urls import path, URLPattern, include
+from django.urls import path, URLResolver, include, URLPattern
 
 from .conf import conf
 
@@ -44,8 +44,8 @@ class ViewRegistry:
         )
 
     @classmethod
-    def urlpatterns(cls) -> list[URLPattern]:
-        urlpatterns = []
+    def urlpatterns(cls) -> list[URLPattern | URLResolver]:
+        urlpatterns: list[URLPattern | URLResolver] = []
         for namespace, views in cls.views.items():
             _patterns = []
             for name, _views in views.items():

@@ -45,7 +45,7 @@ dependencies = [
   "pytest-cov",
   "pytest-django==4.5.2",
   "mypy==1.1.1",
-  "django-stubs==1.15.0",
+  "django-stubs==1.16.0",
 ]
 
 [[tool.hatch.envs.tests.matrix]]
@@ -102,11 +102,20 @@ exclude_lines = [
 
 [tool.mypy]
 mypy_path = "django_view_decorator/"
-exclude = "venv/"
+exclude = [
+    "venv/",
+    "dist/",
+    "docs/",
+]
 namespace_packages = false
 show_error_codes = true
 strict = true
 warn_unreachable = true
+follow_imports = "normal"
+#plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+#django_settings_module = "tests.settings"
 
 [[tool.mypy.overrides]]
 module = "tests.*"

@@ -46,7 +46,7 @@ def view(
     from django.contrib.auth.views import redirect_to_login
 
     def decorator(
-        view_func: Callable[[HttpRequest], HttpResponse],
+        view_func: Callable[[HttpRequest], HttpResponse] | type[View],
     ) -> Callable[[HttpRequest], HttpResponse]:
         @wraps(view_func)
         def wrapper(
