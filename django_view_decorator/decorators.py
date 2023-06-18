@@ -64,8 +64,6 @@ def view(
                 return HttpResponseForbidden()
 
             if isinstance(view_func, type) and issubclass(view_func, View):
-                print(args)
-                print(kwargs)
                 return view_func.as_view()(request, *args, **kwargs)
 
             return view_func(request, *args, **kwargs)
@@ -92,9 +90,7 @@ def namespaced_decorator_factory(*, namespace: str | None = None) -> Callable:
     def decorator(
         paths: str | list[str],
         name: str,
-        login_required: bool = False,
-        staff_required: bool = False,
-        permissions: str | list[str] | None = None,
+        **kwargs,
     ) -> Callable[
         [Callable[[HttpRequest], HttpResponse]],
         Callable[[HttpRequest], HttpResponse],
@@ -103,9 +99,7 @@ def namespaced_decorator_factory(*, namespace: str | None = None) -> Callable:
             paths=paths,
             name=name,
             namespace=namespace,
-            login_required=login_required,
-            staff_required=staff_required,
-            permissions=permissions,
+            **kwargs,
         )
 
     return decorator
