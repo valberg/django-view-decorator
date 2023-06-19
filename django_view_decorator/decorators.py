@@ -80,7 +80,11 @@ def view(
     return decorator
 
 
-def namespaced_decorator_factory(*, namespace: str | None = None) -> Callable:
+def namespaced_decorator_factory(
+    *,
+    namespace: str | None = None,
+    base_path: str | None = None,
+) -> Callable:
     """
     Decorator factory to create namespaced view decorators.
 
@@ -95,6 +99,12 @@ def namespaced_decorator_factory(*, namespace: str | None = None) -> Callable:
         [Callable[[HttpRequest], HttpResponse]],
         Callable[[HttpRequest], HttpResponse],
     ]:
+        if base_path:
+            if isinstance(paths, str):
+                paths = [paths]
+
+            paths = list(map(lambda path: f"{base_path}/{path}", paths))
+
         return view(
             paths=paths,
             name=name,

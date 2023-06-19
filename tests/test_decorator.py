@@ -106,6 +106,23 @@ def test_namespaced_decorator(client):
     assert response.status_code == 200
 
 
+def test_namespaced_and_prepended_decorator(client):
+    url = reverse("namespaced_and_prepended:foo")
+    assert url == "/foos/foo/"
+    response = client.get(url)
+    assert response.status_code == 200
+
+    url = reverse("namespaced_and_prepended:multi")
+    assert url == "/foos/list/"
+    response = client.get(url)
+    assert response.status_code == 200
+
+    url = reverse("namespaced_and_prepended:multi", kwargs={"id": 42})
+    assert url == "/foos/detail/42/"
+    response = client.get(url)
+    assert response.status_code == 200
+
+
 def test_class_based_view(client):
     url = reverse("class_based_view")
     assert url == "/class_based_view/"

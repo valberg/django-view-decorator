@@ -89,6 +89,28 @@ def baz_view(request: HttpRequest) -> HttpResponse:
     return HttpResponse("baz")
 
 
+namespaced_and_prepended_view = namespaced_decorator_factory(
+    namespace="namespaced_and_prepended",
+    base_path="foos",
+)
+
+
+@namespaced_and_prepended_view(
+    paths="foo/",
+    name="foo",
+)
+def foo_list_view(request: HttpRequest) -> HttpResponse:
+    return HttpResponse("foo")
+
+
+@namespaced_and_prepended_view(
+    paths=["list/", "detail/<int:id>/"],
+    name="multi",
+)
+def foo_multi_view(request: HttpRequest, id: int | None = None) -> HttpResponse:
+    return HttpResponse("foo detail" if id else "foo list")
+
+
 @view(
     paths="class_based_view/",
     name="class_based_view",
