@@ -118,3 +118,19 @@ def foo_multi_view(request: HttpRequest, id: int | None = None) -> HttpResponse:
 class AClassBasedView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         return HttpResponse("class_based_view")
+
+
+@view(paths="one_of_many/", name="one_of_many")
+@view(paths="two_of_many/<int:num>/", name="two_of_many")
+@view(paths="three_of_many/<int:number>/", name="three_of_many")
+def multi_decorator_view(
+    request: HttpRequest,
+    number: int | None = None,
+    num: int | None = None,
+) -> HttpResponse:
+    content = "multi decorator"
+    if num:
+        content = f"{content} {num}"
+    if number:
+        content = f"{content} {number}"
+    return HttpResponse(content)

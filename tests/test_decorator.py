@@ -128,3 +128,23 @@ def test_class_based_view(client):
     assert url == "/class_based_view/"
     response = client.get(url)
     assert response.status_code == 200
+
+
+def test_multiple_decorators(client):
+    url = reverse("one_of_many")
+    assert url == "/one_of_many/"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.content == b"multi decorator"
+
+    url = reverse("two_of_many", kwargs={"num": 2})
+    assert url == "/two_of_many/2/"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.content == b"multi decorator 2"
+
+    url = reverse("three_of_many", kwargs={"number": 3})
+    assert url == "/three_of_many/3/"
+    response = client.get(url)
+    assert response.status_code == 200
+    assert response.content == b"multi decorator 3"
