@@ -6,7 +6,7 @@ urlpatterns = [
     path(
         "",
         include_view_urls(
-            modules=["tests.some_views"],
+            extra_modules=["tests.some_views"],
         ),
     ),
 ]
