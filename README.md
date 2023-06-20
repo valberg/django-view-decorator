@@ -2,9 +2,9 @@
 
 [![Tests](https://github.com/valberg/django-view-decorator/actions/workflows/test.yml/badge.svg)](https://github.com/valberg/django-view-decorator/actions/workflows/test.yml)
 [![Documentation](https://readthedocs.org/projects/django-view-decorator/badge/?version=latest)](https://django-view-decorator.readthedocs.io/en/latest/?badge=latest)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/valberg/django-view-decorator/main.svg)](https://results.pre-commit.ci/latest/github/valberg/django-view-decorator/main)
 [![PyPI - Version](https://img.shields.io/pypi/v/django-view-decorator.svg)](https://pypi.org/project/django-view-decorator)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-view-decorator.svg)](https://pypi.org/project/django-view-decorator)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/valberg/django-view-decorator/main.svg)](https://results.pre-commit.ci/latest/github/valberg/django-view-decorator/main)
 
 -----
 
