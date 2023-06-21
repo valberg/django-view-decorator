@@ -13,7 +13,7 @@ authors = [
   { name = "Víðir Valberg Guðmundsson", email = "valberg@orn.li" },
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 3 - Alpha",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
