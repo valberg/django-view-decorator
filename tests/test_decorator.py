@@ -148,3 +148,10 @@ def test_multiple_decorators(client):
     response = client.get(url)
     assert response.status_code == 200
     assert response.content == b"multi decorator 3"
+
+
+def test_app_config(client):
+    url = reverse("app_config_test:testing")
+    assert url == "/app-config-test/testing/"
+    response = client.get(url)
+    assert response.status_code == 200

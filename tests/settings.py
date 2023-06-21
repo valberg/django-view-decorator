@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local
     "test_app",
+    "app_config_test",
 ]
 
 MIDDLEWARE: list[str] = [
