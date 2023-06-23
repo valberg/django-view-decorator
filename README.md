@@ -10,17 +10,55 @@
 
 **django-view-decorator** is decorator aimed at bringing locality of behaviour to the connection between a URL and a view in Django.
 
+Read more about the motivation behind the package in a recent [blogpost](https://valberg.dk/bringing-locality-of-behaviour-to-django-views-and-urls.html).
+
 
 
 **Table of Contents**
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [License](#license)
 
 ## Installation
 
 ```console
 pip install django-view-decorator
+```
+
+## Usage
+
+Setup the project URLconf to include URLs from django-view-decorator:
+
+```python
+# project/urls.py (this is what we point the ROOT_URLCONF setting at)
+from django.urls import path
+
+from django_view_decorator import include_view_urls
+
+urlpatterns = [
+    path("", include_view_urls()),
+]
+```
+
+Use the decorator like so, for:
+
+### Function-based views
+
+```python
+# foos/views.py
+from django_view_decorator import view
+
+@view(paths="/foo/", name="foo")
+def foo(request: HttpRequest) -> HttpResponse:
+    return HttpResponse("foo")
+```
+
+### Class-based views
+```python
+@view(paths="/foo/", name="foo-list")
+class FooList(ListView):
+    model = Foo
 ```
 
 ## Development
