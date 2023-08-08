@@ -15,7 +15,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.0.277'
+    rev: 'v0.0.282'
     hooks:
       - id: ruff
         args:
@@ -29,7 +29,7 @@ repos:
           - --application-directories=.:src
         exclude: migrations/
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.9.0
+    rev: v3.10.1
     hooks:
       - id: pyupgrade
         args:
@@ -46,12 +46,12 @@ repos:
     hooks:
       -   id: yesqa
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v3.0.0
+    rev: v3.0.1
     hooks:
       -   id: add-trailing-comma
           args:
             - --py36-plus
   - repo: https://github.com/psf/black
-    rev: 23.3.0
+    rev: 23.7.0
     hooks:
       - id: black
