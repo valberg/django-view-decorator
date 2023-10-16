@@ -49,8 +49,8 @@ dependencies = [
 ]
 
 [[tool.hatch.envs.tests.matrix]]
-python = ["3.10", "3.11"]
-django = ["3.2", "4.0", "4.1", "4.2"]
+python = ["3.10", "3.11", "3.12"]
+django = ["3.2", "4.1", "4.2", "5.0a1"]
 
 [tool.hatch.envs.tests.overrides]
 matrix.django.dependencies = [
