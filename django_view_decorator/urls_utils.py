@@ -1,6 +1,6 @@
-from collections.abc import Sequence
 import importlib
 import os
+from collections.abc import Sequence
 
 from django.urls import include
 from django.urls import URLPattern
@@ -20,11 +20,17 @@ def include_view_urls(
     """
     if extra_modules:
         for module in extra_modules:
-            if module[0] == '/':
-                module_files = [f[:-3] for f in os.listdir(module) if f.endswith(".py") and f != "__init__.py"]
+            if module[0] == "/":
+                module_files = [
+                    f[:-3]
+                    for f in os.listdir(module)
+                    if f.endswith(".py") and f != "__init__.py"
+                ]
 
                 for module_name in module_files:
-                    spec = importlib.util.spec_from_file_location(module_name, os.path.join(module, f"{module_name}.py"))
+                    spec = importlib.util.spec_from_file_location(
+                        module_name, os.path.join(module, f"{module_name}.py")
+                    )
                     _module = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(_module)
             else:
