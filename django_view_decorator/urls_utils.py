@@ -29,7 +29,8 @@ def include_view_urls(
 
                 for module_name in module_files:
                     spec = importlib.util.spec_from_file_location(
-                        module_name, os.path.join(module, f"{module_name}.py")
+                        module_name,
+                        os.path.join(module, f"{module_name}.py"),
                     )
                     _module = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(_module)
