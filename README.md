@@ -61,6 +61,26 @@ class FooList(ListView):
     model = Foo
 ```
 
+### Parameters
+
+* `paths`: is in a plural form because support also a list of paths
+* `name` the classic route name
+* `namespace`: {I don't know what to write here}
+* `extra_modules`: can be a real path or the python module itselfs (require a list)
+* `login_required`: so you can avoid the Django decorator
+* `permission_required`: so you can avoid the Django decorator
+
+### entra_modules example for real paths
+
+```
+import os
+# We need the project directory
+root = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+urlpatterns = [
+    path("", include_view_urls(extra_modules=[root + "/portal/views"])),
+]
+```
+
 ## Development
 
 ```console
