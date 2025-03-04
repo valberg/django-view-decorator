@@ -24,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
-        django-version: ["3.2", "4.1", "4.2", "5.0a1"]
+        django-version: ["3.2", "4.1", "4.2", "5.0", "5.1", "5.2b1"]
 
     steps:
     - uses: actions/checkout@v3
@@ -34,8 +34,15 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install Hatch
-      run: pip install --upgrade hatch Django==${{ matrix.django-version }}
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+
+    - name: Install python and django
+      run: |
+        uv python {{ matrix.python-version }}
+        uv install django=={{ matrix.django-version }}
 
     - name: Run tests and track code coverage
-      run: hatch run cov
+      run:  pytest --cov=src --cov-report=xml

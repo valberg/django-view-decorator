@@ -1,13 +1,8 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
 name = "django-view-decorator"
 description = 'django-view-decorator is decorator aimed at bringing locality of behaviour to the connection between a URL and a view in Django.'
 readme = "README.md"
 requires-python = ">=3.10"
-license = "MIT"
 keywords = []
 authors = [
   { name = "Víðir Valberg Guðmundsson", email = "valberg@orn.li" },
@@ -30,16 +25,9 @@ Documentation = "https://django-view-decorator.readthedocs.io/"
 Issues = "https://github.com/valberg/django-view-decorator/issues"
 Source = "https://github.com/valberg/django-view-decorator"
 
-[tool.hatch.version]
-path = "django_view_decorator/__about__.py"
 
-[tool.hatch.build.targets.sdist]
-include = [
-    "/django_view_decorator",
-]
-
-[tool.hatch.envs.default]
-dependencies = [
+[tool.uv]
+dev-dependencies = [
   "coverage[toml]==7.2.1",
   "pytest==7.2.2",
   "pytest-cov",
@@ -50,7 +38,7 @@ dependencies = [
 
 [[tool.hatch.envs.tests.matrix]]
 python = ["3.10", "3.11", "3.12"]
-django = ["3.2", "4.1", "4.2", "5.0a1"]
+django = ["3.2", "4.1", "4.2", "5.0", ]
 
 [tool.hatch.envs.tests.overrides]
 matrix.django.dependencies = [
