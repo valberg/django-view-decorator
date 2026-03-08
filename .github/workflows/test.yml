@@ -3,10 +3,10 @@ name: test
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
+      - main
 
 concurrency:
   group: test-${{ github.head_ref }}
@@ -18,26 +18,17 @@ env:
 
 jobs:
   run:
-    name: Python ${{ matrix.python-version }} with Django ${{ matrix.django-version }}
+    name: Run tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
-        django-version: ["4.2", "5.0", "5.1", "5.2b1"]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v4
-      with:
-        enable-cache: true
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
 
-    - name: Run tests and track code coverage
-      run: |
-        uv run \
-          --python ${{ matrix.python-version }} \
-          --with django==${{ matrix.django-version }} pytest \
-          --cov=django_view_decorator \
-          --cov-report=xml
+      - name: Run tests and track code coverage
+        run: |
+          uv run nox

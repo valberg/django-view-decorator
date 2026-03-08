@@ -2,9 +2,8 @@ import pytest as pytest
 from django.urls import reverse
 
 
-@pytest.mark.django_db
 @pytest.fixture
-def user(django_user_model):
+def user(db, django_user_model):
     return django_user_model.objects.create_user(
         username="test",
         password="test",
@@ -18,6 +17,7 @@ def test_urlconf_building(client):
     assert response.status_code == 200
 
 
+@pytest.mark.django_db
 def test_login_required(client, settings, user):
     url = reverse("login_required")
     assert url == "/login_required"
