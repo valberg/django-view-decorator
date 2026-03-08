@@ -2,7 +2,6 @@
 
 [![Tests](https://github.com/valberg/django-view-decorator/actions/workflows/test.yml/badge.svg)](https://github.com/valberg/django-view-decorator/actions/workflows/test.yml)
 [![Documentation](https://readthedocs.org/projects/django-view-decorator/badge/?version=latest)](https://django-view-decorator.readthedocs.io/en/latest/?badge=latest)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/valberg/django-view-decorator/main.svg)](https://results.pre-commit.ci/latest/github/valberg/django-view-decorator/main)
 [![PyPI - Version](https://img.shields.io/pypi/v/django-view-decorator.svg)](https://pypi.org/project/django-view-decorator)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-view-decorator.svg)](https://pypi.org/project/django-view-decorator)
 
@@ -11,8 +10,6 @@
 **django-view-decorator** is decorator aimed at bringing locality of behaviour to the connection between a URL and a view in Django.
 
 Read more about the motivation behind the package in a recent [blogpost](https://valberg.dk/bringing-locality-of-behaviour-to-django-views-and-urls.html).
-
-
 
 **Table of Contents**
 
@@ -55,6 +52,7 @@ def foo(request: HttpRequest) -> HttpResponse:
 ```
 
 ### Class-based views
+
 ```python
 @view(paths="/foo/", name="foo-list")
 class FooList(ListView):
@@ -66,9 +64,7 @@ class FooList(ListView):
 ```console
 git clone
 cd django-view-decorator
-pip install hatch
-hatch run tests:cov
-hatch run tests:typecheck
+uv run nox
 ```
 
 ## License
