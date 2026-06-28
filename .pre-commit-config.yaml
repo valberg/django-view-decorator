@@ -2,42 +2,45 @@
 default_language_version:
   python: python3.12
 repos:
-  -   repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v5.0.0
-      hooks:
-        -   id: check-yaml
-        -   id: check-toml
-        -   id: end-of-file-fixer
-        -   id: trailing-whitespace
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.9.9
+    rev: v0.15.20
     hooks:
       # Run the linter.
       - id: ruff
-        args: [ --fix ]
+        args: [--fix]
       # Run the formatter.
       - id: ruff-format
   - repo: "https://github.com/pre-commit/mirrors-mypy"
-    rev: 'v1.15.0'
+    rev: "v2.1.0"
     hooks:
       - id: "mypy"
-        exclude: "test*"
         args: ["--show-traceback"]
+        additional_dependencies:
+          - "django-stubs"
+          - "nox"
+          - "pytest"
+
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
+    rev: v3.21.2
     hooks:
       - id: pyupgrade
         args:
           - --py312-plus
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 1.23.1
+    rev: 1.31.1
     hooks:
       - id: django-upgrade
         args: [--target-version, "5.1"]
   - repo: https://github.com/adamchainz/djade-pre-commit
-    rev: "1.3.2"  # Replace with the latest tag on GitHub
+    rev: "1.9.0" # Replace with the latest tag on GitHub
     hooks:
       - id: djade
         args: [--target-version, "5.1"]
-...
