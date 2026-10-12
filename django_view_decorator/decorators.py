@@ -3,16 +3,14 @@ from collections.abc import Callable
 from functools import wraps
 from typing import Any
 
-from django.http import HttpRequest
-from django.http import HttpResponse
-from django.http import HttpResponseForbidden
+from django.http import HttpRequest, HttpResponse, HttpResponseForbidden
 from django.views import View
 
 from django_view_decorator.apps import ViewRegistry
 
 __all__ = [
-    "view",
     "namespaced_decorator_factory",
+    "view",
 ]
 
 # If python version is <= 3.10, use typing_extensions
