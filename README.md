@@ -46,6 +46,7 @@ Use the decorator like so, for:
 # foos/views.py
 from django_view_decorator import view
 
+
 @view(paths="/foo/", name="foo")
 def foo(request: HttpRequest) -> HttpResponse:
     return HttpResponse("foo")
