@@ -11,12 +11,10 @@ else:
     from typing_extensions import TypeVarTuple
 
 from django.apps import AppConfig
-from django.http import HttpRequest
-from django.http import HttpResponse
-from django.urls import path, URLResolver, include, URLPattern
+from django.http import HttpRequest, HttpResponse
+from django.urls import URLPattern, URLResolver, include, path
 
 from .conf import conf
-
 
 ViewType: TypeAlias = Callable[[HttpRequest, TypeVarTuple], HttpResponse]
 
