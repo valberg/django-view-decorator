@@ -1,9 +1,7 @@
 from collections.abc import Sequence
 from importlib import import_module
 
-from django.urls import include
-from django.urls import URLPattern
-from django.urls import URLResolver
+from django.urls import URLPattern, URLResolver, include
 
 
 def include_view_urls(
