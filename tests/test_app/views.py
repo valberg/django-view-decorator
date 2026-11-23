@@ -1,9 +1,7 @@
-from django.http import HttpRequest
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from django.views import View
 
-from django_view_decorator import namespaced_decorator_factory
-from django_view_decorator import view
+from django_view_decorator import namespaced_decorator_factory, view
 
 
 @view(
